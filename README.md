@@ -1,39 +1,25 @@
-# Gotrays.Desktop
+# Gotrays Desktop Template
 
-#### 介绍
-{**以下是 Gitee 平台说明，您可以替换此简介**
-Gitee 是 OSCHINA 推出的基于 Git 的代码托管平台（同时支持 SVN）。专为开发者提供稳定、高效、安全的云端软件开发协作平台
-无论是个人、团队、或是企业，都能够用 Gitee 实现代码托管、项目管理、协作开发。企业项目请看 [https://gitee.com/enterprises](https://gitee.com/enterprises)}
+document language: [[English](README.en.md)] [中文]
 
-#### 软件架构
-软件架构说明
+## 项目介绍：
 
+这个项目是一个基于photino+Blazor HyBrid技术实现的项目模板，它提供了一个无边框的拖动缩放的实现，使得用户可以自由地调整窗口大小和位置，从而提高了用户的使用体验。
 
-#### 安装教程
+该项目模板采用了photino和Blazor HyBrid技术，这两种技术的结合使得该项目具有了更好的性能和更高的可扩展性。photino是一个跨平台的桌面应用程序框架，它可以在Windows、MacOS和Linux等多个平台上运行，而Blazor HyBrid则是一个将Blazor应用程序嵌入到桌面应用程序中的技术，它可以让开发者使用C#和.NET技术来构建桌面应用程序。
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+该项目模板默认提供了无边框的拖动缩放的实现，这意味着用户可以通过鼠标拖动窗口的任意位置来改变窗口的大小和位置，而不需要使用传统的边框和标题栏。这种设计不仅可以提高用户的使用体验，还可以让应用程序更加美观和简洁。
 
-#### 使用说明
+除了无边框的拖动缩放功能，该项目模板还提供了其他一些常用的功能，例如菜单栏、工具栏、状态栏等，这些功能可以帮助开发者更快地构建出自己的应用程序。
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+## 引用
 
-#### 参与贡献
-
-1.  Fork 本仓库
-2.  新建 Feat_xxx 分支
-3.  提交代码
-4.  新建 Pull Request
+- (Masa Blazor)[https://www.masastack.com/blazor]
+- (photino.Blazor)[https://github.com/tryphotino/photino.Blazor]
+- (Token Module)[https://github.com/239573049/token-module]
 
 
-#### 特技
+## 交流
 
-1.  使用 Readme\_XXX.md 来支持不同的语言，例如 Readme\_en.md, Readme\_zh.md
-2.  Gitee 官方博客 [blog.gitee.com](https://blog.gitee.com)
-3.  你可以 [https://gitee.com/explore](https://gitee.com/explore) 这个地址来了解 Gitee 上的优秀开源项目
-4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
-5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
-6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+Blazor交流群：452761192
+个人微信：wk28u9123456789

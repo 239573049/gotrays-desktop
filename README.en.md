@@ -1,36 +1,24 @@
-# Gotrays.Desktop
+# Gotrays Desktop Template
 
-#### Description
-{**When you're done, you can delete the content in this README and update the file with details for others getting started with your repository**}
+document language: [English] [[中文](README.md)]
 
-#### Software Architecture
-Software architecture description
+## Project Introduction:
 
-#### Installation
+This project is a project template based on photino+Blazor HyBrid technology. It provides a borderless drag and resize implementation, allowing users to freely adjust the window size and position, thereby improving the user experience.
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+The project template uses photino and Blazor HyBrid technology. The combination of these two technologies makes the project more performant and scalable. photino is a cross-platform desktop application framework that can run on multiple platforms such as Windows, MacOS, and Linux. Blazor HyBrid is a technology that embeds Blazor applications into desktop applications, allowing developers to use C# and .NET technologies to build desktop applications.
 
-#### Instructions
+The project template provides a default borderless drag and resize implementation, which means that users can change the size and position of the window by dragging the window to any position with the mouse, without using traditional borders and title bars. This design not only improves the user experience, but also makes the application more beautiful and concise.
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+In addition to the borderless drag and resize function, the project template also provides other common functions such as menu bar, toolbar, and status bar, which can help developers build their own applications faster.
 
-#### Contribution
+## References
 
-1.  Fork the repository
-2.  Create Feat_xxx branch
-3.  Commit your code
-4.  Create Pull Request
+- (Masa Blazor)[https://www.masastack.com/blazor]
+- (photino.Blazor)[https://github.com/tryphotino/photino.Blazor]
+- (Token Module)[https://github.com/239573049/token-module]
 
+## Communication
 
-#### Gitee Feature
-
-1.  You can use Readme\_XXX.md to support different languages, such as Readme\_en.md, Readme\_zh.md
-2.  Gitee blog [blog.gitee.com](https://blog.gitee.com)
-3.  Explore open source project [https://gitee.com/explore](https://gitee.com/explore)
-4.  The most valuable open source project [GVP](https://gitee.com/gvp)
-5.  The manual of Gitee [https://gitee.com/help](https://gitee.com/help)
-6.  The most popular members  [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+Blazor Communication Group: 452761192
+Personal WeChat: wk28u9123456789
