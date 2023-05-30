@@ -2,16 +2,6 @@
 
 
 <MApp Id="inspire">
-    <div id="m-app-bar">
-    <MSystemBar App Class="m-app-bar">
-        <MSpacer></MSpacer>
-
-        <MIcon OnClick="OnMinus">mdi-minus</MIcon>
-
-        <MIcon OnClick="OnMaximized">@(maximized ? "mdi-fullscreen-exit" : "mdi-fullscreen")</MIcon>
-        <MIcon OnClick="OnClose">mdi-close</MIcon>
-    </MSystemBar>
-        </div>
     <MAppBar App
              ClippedRight
              Flat
@@ -37,10 +27,17 @@
                            MiniVariant>
             <MAvatar Class="d-block text-center mx-auto mt-4"
                      Color="grey darken-1"
-                     Size="36"></MAvatar>
+                     Size="36">
+                <MImage Src="logo.png" Alt="Jack"></MImage>
+            </MAvatar>
 
             <MDivider Class="mx-3 my-5"></MDivider>
-
+            
+            <MAvatar Class="d-block text-center mx-auto mb-9 chat-room"
+                     Color="grey lighten-1"
+                     Size="45">
+                <MImage Src="/png/csharp.png" Alt="Jack"></MImage>
+            </MAvatar>
             @for (int i = 0; i < 6; i++)
             {
                 <MAvatar Class="d-block text-center mx-auto mb-9"
@@ -98,10 +95,3 @@
                     Solo></MTextField>
     </MFooter>
 </MApp>
-
- @* 用于右下角缩放 *@
- <div id="resize-bottom-right"
- @onmousemove="BottomRightOnMouseMove"
- @onmousedown="BottomRightOnMouseDown"
- @onmouseup="BottomRightOnMouseUp">
- </div>
