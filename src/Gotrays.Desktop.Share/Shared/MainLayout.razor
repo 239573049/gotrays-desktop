@@ -1,6 +1,5 @@
 ﻿@inherits LayoutComponentBase
-
-
+@inject NavigationManager NavigationManager
 <MApp Id="inspire">
     <MAppBar App
              ClippedRight
@@ -19,79 +18,48 @@
     </MAppBar>
 
     <MNavigationDrawer @bind-Value="_drawer"
-                       App
+                              App
+                              MiniVariantWidth="300"
                        Width="300">
+
         <MNavigationDrawer @bind-Value="_drawer"
-                           Absolute
-                           Color="grey lighten-3"
-                           MiniVariant>
-            <MAvatar Class="d-block text-center mx-auto mt-4"
+                                  Absolute
+                           Color="var(--menu-bar-background-color)"
+                                  MiniVariant>
+            <MAvatar Class="d-block text-center mx-auto mt-4 chat-room"
                      Color="grey darken-1"
-                     Size="36">
+                     Size="45">
+                <div class="pill-2RsI5Q wrapper-z5ab_q" aria-hidden="true"><span class="item-2LIpTv" style="opacity: 1; height: 40px; transform: none;"></span></div>
+
                 <MImage Src="logo.png" Alt="Jack"></MImage>
             </MAvatar>
 
-            <MDivider Class="mx-3 my-5"></MDivider>
-            
+            <MDivider Style="background-color:#7b7e81;" Class="mx-3 my-5"></MDivider>
+
             <MAvatar Class="d-block text-center mx-auto mb-9 chat-room"
                      Color="grey lighten-1"
                      Size="45">
                 <MImage Src="/png/csharp.png" Alt="Jack"></MImage>
             </MAvatar>
-            @for (int i = 0; i < 6; i++)
-            {
-                <MAvatar Class="d-block text-center mx-auto mb-9"
-                         Color="grey lighten-1"
-                         Size="28"></MAvatar>
-            }
+
+
+            <MAvatar Class="chat-room d-block text-center mx-auto mb-9 add"
+                     Color="grey lighten-1"
+                     Size="45">
+                <MIcon Color="#ffffff">fa:fas fa-light fa-plus</MIcon>
+            </MAvatar>
+
         </MNavigationDrawer>
 
-        <MSheet Color="grey lighten-5"
-                Height="128"
-                Width="@("100%")"></MSheet>
+        @if (_home)
+        {
+            <GMenu/>
+        }
 
-        <MList Class="pl-14"
-               Shaped>
-            @for (int i = 0; i < 5; i++)
-            {
-                <MListItem Link>
-                    <MListItemContent>
-                        <MListItemTitle>Item @i</MListItemTitle>
-                    </MListItemContent>
-                </MListItem>
-            }
-        </MList>
-    </MNavigationDrawer>
-
-    <MNavigationDrawer App
-                       Clipped
-                       Right>
-        <MList>
-            @for (int i = 0; i < 5; i++)
-            {
-                <MListItem Link>
-                    <MListItemContent>
-                        <MListItemTitle>Item @i</MListItemTitle>
-                    </MListItemContent>
-                </MListItem>
-            }
-        </MList>
     </MNavigationDrawer>
 
     <MMain>
         @Body
     </MMain>
 
-    <MFooter App
-             Color="transparent"
-             Height="72"
-             Inset>
-        <MTextField BackgroundColor="grey lighten-1"
-                    Dense
-                    Flat
-                    HideDetails="@("true")"
-                    Value="@("")"
-                    Rounded
-                    Solo></MTextField>
-    </MFooter>
 </MApp>

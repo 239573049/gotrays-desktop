@@ -1,0 +1,37 @@
+﻿@inject IJSRuntime JSRuntime
+
+<MList Nav Class="menu-bar-content"
+       Dense>
+    <div style="margin-left: 50px;">
+        <MSheet Color="var(--menu-bar-content-background-color)"
+                Height="160"
+                Width="@("100%")">
+            <MButton Text Block>
+                <span style="text-align:center;color:var(--menu-bar-content-text-color)">Gotrays Desktop</span>
+            </MButton>
+
+            <MButton OnClick="OnGitHub" Text Block>
+                GitHub<MIcon>mdi-github</MIcon>
+            </MButton>
+            <span style="font-size:10px;color:var(--menu-bar-content-text-color)">
+                Gotrays Desktop是一个基于Blazor的跨平台项目模板，使用MASA Blazor实现！并且实现了类Discord的布局设计！
+            </span>
+        </MSheet>
+        <MDivider Style="background-color:#7b7e81;"></MDivider>
+        <MListItemGroup @bind-Value="_selectedItem"
+                        Color="primary">
+            @foreach (var item in _items)
+            {
+                <MListItem>
+                    <MListItemIcon>
+                        <MIcon>@item.Icon</MIcon>
+                    </MListItemIcon>
+
+                    <MListItemContent>
+                        <MListItemTitle><span style="color:var(--menu-bar-content-text-color);">@item.Text</span></MListItemTitle>
+                    </MListItemContent>
+                </MListItem>
+            }
+        </MListItemGroup>
+    </div>
+</MList>

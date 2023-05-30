@@ -1,3 +1,40 @@
-.chat-room:hover {
+.chat-room {
+    transition: 0.3s;
+    border-radius: 20px;
+    cursor: pointer;
+    min-width: 45px !important;
+}
 
+    .chat-room:hover {
+        transition: 0.3s;
+        border-radius: 10px;
+    }
+
+.m-application .grey.lighten-1 .add {
+    background-color: var(--grey-background-color) !important;
+}
+
+    .m-application .grey.lighten-1:hover {
+        transition: 0.3s;
+        background-color: #4caf50 !important;
+    }
+
+.m-application .mb-9 {
+    margin-bottom: 10px !important;
+}
+
+.menu-bar-content {
+    background-color: var(--menu-bar-content-background-color) !important;
+    height: 100%;
+    color: var(--menu-bar-content-text-color);
+}
+
+:root {
+    /*菜单背景*/
+    --menu-bar-background-color: rgb(31,30,34);
+    /*菜单项默认背景*/
+    --grey-background-color: rgb(49,51,56);
+    /*菜单内容列表背景*/
+    --menu-bar-content-background-color: rgb(43,45,49);
+    --menu-bar-content-text-color: #ffffff;
 }
