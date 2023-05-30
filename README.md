@@ -14,9 +14,9 @@ document language: [[English](README.en.md)] [中文]
 
 ## 引用
 
-- (Masa Blazor)[https://www.masastack.com/blazor]
-- (photino.Blazor)[https://github.com/tryphotino/photino.Blazor]
-- (Token Module)[https://github.com/239573049/token-module]
+- [Masa Blazor](https://www.masastack.com/blazor)
+- [photino.Blazor](https://github.com/tryphotino/photino.Blazor)
+- [Token Module](https://github.com/239573049/token-module)
 
 
 ## 交流

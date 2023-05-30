@@ -14,9 +14,9 @@ In addition to the borderless drag and resize function, the project template als
 
 ## References
 
-- (Masa Blazor)[https://www.masastack.com/blazor]
-- (photino.Blazor)[https://github.com/tryphotino/photino.Blazor]
-- (Token Module)[https://github.com/239573049/token-module]
+- [Masa Blazor](https://www.masastack.com/blazor)
+- [photino.Blazor](https://github.com/tryphotino/photino.Blazor)
+- [Token Module](https://github.com/239573049/token-module)
 
 ## Communication
 
