@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <title>Gotrays.Dekstop.Client</title>
+    <base href="/" />
+    <link href="_content/Masa.Blazor/css/masa-blazor.min.css" rel="stylesheet">
+    <link href="css/app.css" rel="stylesheet" />
+    <link href="Gotrays.Dekstop.Client.styles.css" rel="stylesheet" />
+    <link href="https://cdn.masastack.com/npm/@mdi/font@7.1.96/css/materialdesignicons.min.css" rel="stylesheet">
+    <link href="https://cdn.masastack.com/npm/materialicons/materialicons.css" rel="stylesheet">
+    <link href="https://cdn.masastack.com/npm/fontawesome/v5.0.13/css/all.css" rel="stylesheet">
+    <style>
+        #app .m-app-bar {
+            -webkit-app-region: drag;
+        }
+
+        html {
+            overflow: hidden;
+        }
+
+        #resize-bottom-right {
+            position: absolute;
+            width: 15px;
+            height: 15px;
+            z-index: 99999;
+        }
+
+        #resize-bottom-right {
+            bottom: 0;
+            right: 0;
+            cursor: nwse-resize;
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="status-bar-safe-area"></div>
+
+    <div id="app">Loading...</div>
+
+    <div id="blazor-error-ui">
+        An unhandled error has occurred.
+        <a href="" class="reload">Reload</a>
+        <a class="dismiss">🗙</a>
+    </div>
+
+    <script src="_framework/blazor.webview.js"></script>
+    <script src="_content/BlazorComponent/js/blazor-component.js"></script>
+
+<script>
+
+        let start = false;
+        let pageX = 0;
+        let pageY = 0;
+        document.body.addEventListener('mousedown', evt => {
+            const { target } = evt;
+            const appRegion = getComputedStyle(target)['-webkit-app-region'];
+            const app = document.getElementById("m-app-bar");
+            app.addEventListener('mousemove', onmousemove)
+
+            app.addEventListener("mousedown", (e) => {
+                console.log(e.pageX, e.pageY);
+                pageX = e.pageX;
+                pageY = e.pageY;
+                start = true;
+            })
+
+            app.addEventListener("mouseup", (e) => {
+                start = false;
+            })
+            
+            if (appRegion === 'drag') {
+                var data = {
+                    Command: "MouseMove",
+                    Data: {
+
+                    }
+                }
+                evt.preventDefault();
+                evt.stopPropagation();
+            }
+        });
+        
+
+        function onmousemove(e) {
+            if (start) {
+                console.log("MouseMove", e);
+                var data = {
+                    "Command": "MouseMove",
+                    X: e.clientX - pageX,
+                    Y: e.clientY - pageY
+                }
+                window.external.sendMessage(JSON.stringify(data));
+            }
+
+        }
+
+    </script>
+</body>
+
+</html>
