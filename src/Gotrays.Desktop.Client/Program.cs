@@ -5,6 +5,8 @@ using Photino.Blazor;
 using PhotinoNET;
 using System.Drawing;
 using System.Text.Json;
+using Microsoft.AspNetCore.Components.Authorization;
+using Microsoft.Extensions.DependencyInjection.Extensions;
 using Token.Extensions;
 
 internal class Program
@@ -15,7 +17,7 @@ internal class Program
         var builder = PhotinoBlazorAppBuilder.CreateDefault(args);
 
         builder.RootComponents.Add<App>("#app");
-
+        
         builder.Services.AddModuleApplicationAsync<GotraysDesktopClientModule>().GetAwaiter().GetResult();
         builder.Services.AddLogging();
 
@@ -29,7 +31,9 @@ internal class Program
             .SetTitle("Gotrays Desktop");
         
         AppDomain.CurrentDomain.UnhandledException += (sender, error) =>
-            { app.MainWindow.OpenAlertWindow("Fatal exception", error.ExceptionObject.ToString()); };
+        {
+            app.MainWindow.OpenAlertWindow("Fatal exception", error.ExceptionObject.ToString());
+        };
 
         app.Run();
     }

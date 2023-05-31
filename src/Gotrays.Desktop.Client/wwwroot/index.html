@@ -7,30 +7,31 @@
     <base href="/" />
     <link href="_content/Masa.Blazor/css/masa-blazor.min.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet" />
+    <link href="css/masa-blazor-pro.css" rel="stylesheet" />
     <link href="_content/Gotrays.Desktop.Share/css/gotrays-desktop-share.css" rel="stylesheet" />
     <link href="https://cdn.masastack.com/npm/@mdi/font@7.1.96/css/materialdesignicons.min.css" rel="stylesheet">
     <link href="https://cdn.masastack.com/npm/materialicons/materialicons.css" rel="stylesheet">
     <link href="https://cdn.masastack.com/npm/fontawesome/v5.0.13/css/all.css" rel="stylesheet">
     <style>
-        #app .m-app-bar {
-            -webkit-app-region: drag;
-        }
-
         html {
             overflow: hidden;
         }
-
-        #resize-bottom-right {
+        .loader {
+            border: 16px solid #f3f3f3;
+            border-top: 16px solid #3498db;
+            border-radius: 50%;
+            width: 120px;
+            height: 120px;
+            animation: spin 2s linear infinite;
             position: absolute;
-            width: 15px;
-            height: 15px;
-            z-index: 99999;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
         }
 
-        #resize-bottom-right {
-            bottom: 0;
-            right: 0;
-            cursor: nwse-resize;
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
         }
     </style>
 </head>
@@ -39,7 +40,9 @@
 
     <div class="status-bar-safe-area"></div>
 
-    <div id="app">Loading...</div>
+    <div id="app">
+        <div class="loader"></div>
+    </div>
 
     <div id="blazor-error-ui">
         An unhandled error has occurred.

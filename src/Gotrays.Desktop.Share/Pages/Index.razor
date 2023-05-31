@@ -1,7 +1,25 @@
 @page "/"
 
-<PageTitle>Index</PageTitle>
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
-<h1>Hello, world!</h1>
+<input @bind="userIdentifier" />
+<button @onclick="SignIn">Sign in</button>
 
-Welcome to your new app.
+<AuthorizeView>
+    <Authorized>
+        <p>Hello, @context.User.Identity.Name!</p>
+    </Authorized>
+    <NotAuthorized>
+        <p>You're not authorized.</p>
+    </NotAuthorized>
+</AuthorizeView>
+
+@code {
+    public string userIdentifier = "账号";
+
+    private void SignIn()
+    {
+        ((CustomAuthenticationStateProvider)AuthenticationStateProvider)
+            .AuthenticateUser(userIdentifier);
+    }
+}

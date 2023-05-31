@@ -14,10 +14,15 @@
     background-color: var(--grey-background-color) !important;
 }
 
-    .m-application .grey.lighten-1:hover {
-        transition: 0.3s;
-        background-color: #4caf50 !important;
-    }
+.m-application .grey.darken-1:hover {
+    transition: 0.3s;
+    background-color: #4caf50 !important;
+}
+
+.m-application .grey.lighten-1:hover {
+    transition: 0.3s;
+    background-color: #4caf50 !important;
+}
 
 .m-application .mb-9 {
     margin-bottom: 10px !important;
