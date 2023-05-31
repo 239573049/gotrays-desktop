@@ -1,4 +1,5 @@
 ﻿@inject IJSRuntime JSRuntime
+@inject IChannelService ChannelService
 
 <MList Nav Class="menu-bar-content"
        Dense>
@@ -20,16 +21,18 @@
         <MDivider Style="background-color:#7b7e81;"></MDivider>
         <MListItemGroup @bind-Value="_selectedItem"
                         Color="primary">
-            @foreach (var item in _items)
+            @foreach (var item in channelDtos)
             {
-                <MListItem>
+                <MListItem OnClick="async ()=>await OnClick.InvokeAsync(item)">
                     <MListItemIcon>
-                        <MIcon>@item.Icon</MIcon>
+                        <MAvatar Tile Size="30">
+                            <MImage Src="https://cdn.masastack.com/stack/images/website/masa-blazor/jack.png" Alt="Jack"></MImage>
+                        </MAvatar>
                     </MListItemIcon>
 
                     <MListItemContent>
                         <MListItemTitle>
-                            <span style="color:var(--menu-bar-content-text-color);">@item.Text</span>
+                            <span style="color:var(--menu-bar-content-text-color);">@item.Name</span>
                         </MListItemTitle>
                     </MListItemContent>
                 </MListItem>

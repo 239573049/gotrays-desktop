@@ -20,6 +20,6 @@ public class ChannelService : BaseCaller, IChannelService, ISingletonDependency
 
     public async Task<List<ChannelDto>> GetListAsync(string? keywords)
     {
-        return await _caller.GetAsync<List<ChannelDto>>("Cahnnels/List", keywords);
+        return await _caller.GetAsync<List<ChannelDto>>("Channels/List?keywords=" + keywords);
     }
 }

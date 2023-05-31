@@ -1,16 +1,14 @@
-﻿using Gotrays.Service.Contract.Users;
-using Masa.BuildingBlocks.Service.Caller;
-using Token.Dependency;
-
+﻿
 namespace Gotrays.Desktop.Service.Users;
 
 public class UserService : BaseCaller, IUserService, ISingletonDependency
 {
     private readonly ICaller _caller;
-
-    public UserService(ICaller caller)
+    private readonly IStorageService _storageService;
+    public UserService(ICaller caller, IStorageService storageService)
     {
         _caller = caller;
+        _storageService = storageService;
     }
 
     public async Task CreateAsync(CreateUserDto dto)
@@ -26,7 +24,11 @@ public class UserService : BaseCaller, IUserService, ISingletonDependency
 
             if (response.IsSuccessStatusCode)
             {
-                return await response.Content.ReadAsStringAsync();
+                var token = await response.Content.ReadAsStringAsync();
+
+                _storageService.Token = token;
+
+                return token;
             }
 
             throw new Exception("账号或密码错误");

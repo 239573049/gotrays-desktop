@@ -1,4 +1,5 @@
-﻿using Masa.BuildingBlocks.Service.Caller;
+﻿using Gotrays.Desktop.Service.Middlewares;
+using Masa.BuildingBlocks.Service.Caller;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Gotrays.Desktop.Service;
@@ -13,7 +14,7 @@ public class GotraysDesktopServiceModule : TokenModule
             {
                 httpClient.BaseAddress = "http://localhost:5126/"; //指定API服务域名地址
                 httpClient.Prefix = "api/v1/";//指定API服务前缀
-            });
+            }).AddMiddleware<GotraysMiddleware>();
         });
 
     }

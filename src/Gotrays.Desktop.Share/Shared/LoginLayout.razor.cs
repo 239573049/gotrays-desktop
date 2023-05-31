@@ -25,10 +25,5 @@ public partial class LoginLayout
     {
         var token = await UserService.LoginAsync(Account, Password);
 
-        // 解密token
-        var jwt = new JwtSecurityTokenHandler().ReadJwtToken(token);
-        var claims = jwt.Claims;
-
-        ((CustomAuthenticationStateProvider)AuthenticationStateProvider).AuthenticateUser(claims);
     }
 }

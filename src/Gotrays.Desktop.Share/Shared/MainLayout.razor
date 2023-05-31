@@ -3,6 +3,7 @@
 
 <MApp Id="inspire">
     <MAppBar App
+             Color="var(--app-bar-background-color)"
              ClippedRight
              Flat
              Height="72">
@@ -29,7 +30,9 @@
             <MAvatar Class="d-block text-center mx-auto mt-4 chat-room"
                      Color="grey darken-1"
                      Size="45">
-                <div class="pill-2RsI5Q wrapper-z5ab_q" aria-hidden="true"><span class="item-2LIpTv" style="opacity: 1; height: 40px; transform: none;"></span></div>
+                <div class="pill-2RsI5Q wrapper-z5ab_q" aria-hidden="true">
+                    <span class="item-2LIpTv" style="opacity: 1; height: 40px; transform: none;"></span>
+                    </div>
 
                 <MImage Src="logo.png" Alt="Jack"></MImage>
             </MAvatar>
@@ -53,13 +56,14 @@
 
         @if (_home)
         {
-            <GMenu/>
+            <GMenu OnClick="(i)=>OnChannelClick(i)" />
         }
 
     </MNavigationDrawer>
-
-    <MMain>
-        @Body
-    </MMain>
+    <CascadingValue Value="Channel" Name="@(nameof(ChannelDto))">
+        <MMain Style="background-color:var(--app-bar-background-color);">
+            @Body
+        </MMain>
+    </CascadingValue>
 
 </MApp>

@@ -15,9 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Service", "Service", "{0367
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Contracts", "Contracts", "{A52AD85A-25D2-4CAC-9B01-54B1687624D9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gotrays.Contracts", "src\Contracts\Gotrays.Contracts\Gotrays.Contracts.csproj", "{67B719F5-E7A3-4573-9418-B29E24407E5F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gotrays.Contracts", "src\Contracts\Gotrays.Contracts\Gotrays.Contracts.csproj", "{67B719F5-E7A3-4573-9418-B29E24407E5F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gotrays.Service", "src\Service\Gotrays.Service\Gotrays.Service.csproj", "{740AB6D7-C230-4BA4-A5F3-0965C967BE31}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Gotrays.Service", "src\Service\Gotrays.Service\Gotrays.Service.csproj", "{740AB6D7-C230-4BA4-A5F3-0965C967BE31}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
