@@ -1,25 +1,7 @@
 @page "/"
 
-@inject AuthenticationStateProvider AuthenticationStateProvider
-
-<input @bind="userIdentifier" />
-<button @onclick="SignIn">Sign in</button>
-
-<AuthorizeView>
-    <Authorized>
-        <p>Hello, @context.User.Identity.Name!</p>
-    </Authorized>
-    <NotAuthorized>
-        <p>You're not authorized.</p>
-    </NotAuthorized>
-</AuthorizeView>
+aspx
 
 @code {
-    public string userIdentifier = "账号";
 
-    private void SignIn()
-    {
-        ((CustomAuthenticationStateProvider)AuthenticationStateProvider)
-            .AuthenticateUser(userIdentifier);
-    }
 }

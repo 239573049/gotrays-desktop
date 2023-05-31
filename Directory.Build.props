@@ -6,4 +6,9 @@
     		<ImplicitUsings>enable</ImplicitUsings>
     		<LangVersion>10</LangVersion>
 	</PropertyGroup>
+
+	<PropertyGroup>
+		<MASAFrameworkVersion>1.0.0-rc.2</MASAFrameworkVersion>
+	</PropertyGroup>
+
 </Project>

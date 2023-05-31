@@ -1,4 +1,6 @@
+@using Gotrays.Service.Contract.Users
 @inject NavigationManager NavigationManager
+@inject IUserService UserService
 
 <MApp>
     <MRow Class="max-height ma-0">
@@ -23,13 +25,13 @@
                         </MImage>
                     </MAvatar>
                     <h5 class="mt-2 mb-12">欢迎使用Gotrays Desktop! 👋</h5>
-                    <MTextField @bind-Value="UserName"
+                    <MTextField @bind-Value="Account"
                                 Label="用户名"
                                 Placeholder="admin"
                                 Outlined
                                 HideDetails="@("auto")">
                     </MTextField>
-                    <MTextField TValue="string"
+                    <MTextField @bind-Value="Password"
                                 Class="mt-10"
                                 Label="Password"
                                 Type="@(_show ? "text" : "password")"
