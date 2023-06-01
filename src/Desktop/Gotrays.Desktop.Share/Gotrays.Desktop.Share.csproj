@@ -27,7 +27,7 @@
         </Content>
     </ItemGroup>
     <ItemGroup>
-      <ProjectReference Include="..\Contracts\Gotrays.Contracts\Gotrays.Contracts.csproj" />
+      <ProjectReference Include="..\..\Contracts\Gotrays.Contracts\Gotrays.Contracts.csproj" />
     </ItemGroup>
 
 </Project>

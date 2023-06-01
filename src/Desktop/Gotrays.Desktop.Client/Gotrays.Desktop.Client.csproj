@@ -10,11 +10,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <ProjectReference Include="..\Gotrays.Desktop.Service\Gotrays.Desktop.Service.csproj" />
-	  <ProjectReference Include="..\Gotrays.Desktop.Share\Gotrays.Desktop.Share.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
 		<Content Update="wwwroot\**">
 			<CopyToOutputDirectory>Always</CopyToOutputDirectory>
 		</Content>
@@ -24,5 +19,10 @@
 	  <None Update="logo.ico">
 	    <CopyToOutputDirectory>Always</CopyToOutputDirectory>
 	  </None>
+	</ItemGroup>
+
+	<ItemGroup>
+	  <ProjectReference Include="..\Gotrays.Desktop.Service\Gotrays.Desktop.Service.csproj" />
+	  <ProjectReference Include="..\Gotrays.Desktop.Share\Gotrays.Desktop.Share.csproj" />
 	</ItemGroup>
 </Project>

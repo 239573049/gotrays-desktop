@@ -5,11 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\Contracts\Gotrays.Contracts\Gotrays.Contracts.csproj" />
+    <PackageReference Include="Masa.Contrib.Service.Caller.HttpClient" Version="1.0.0-rc.2.1" />
   </ItemGroup>
 
   <ItemGroup>
-    <PackageReference Include="Masa.Contrib.Service.Caller.HttpClient" Version="1.0.0-rc.2.1" />
+    <ProjectReference Include="..\..\Contracts\Gotrays.Contracts\Gotrays.Contracts.csproj" />
   </ItemGroup>
 
 </Project>
