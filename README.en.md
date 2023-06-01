@@ -17,6 +17,9 @@ The current project is a cross-platform client project template based on `Blazor
 - [Token Module](https://github.com/239573049/token-module)
 - [Masa Framework](https://docs.masastack.com/framework/concepts/overview)
 
+## activity
+
+![Alt](https://repobeats.axiom.co/api/embed/786db717da2f7e94a92df23254e9b081128b91a1.svg "Repobeats analytics image")
 
 ## Communication
 
