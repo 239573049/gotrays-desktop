@@ -47,6 +47,20 @@
     background-color: var(--app-bar-background-color) !important;
 }
 
+.markdown-parser__basic img {
+    max-width: 100%;
+}
+
+.m-menu__content {
+    border: var(--app-bar-background-color);
+    background-color: rgb(35 36 40);
+}
+
+.markdown-parser__basic blockquote {
+    border-left: 4px lightgray solid;
+    padding-left: 16px;
+}
+
 :root {
     /*²Ëµ¥±³¾°*/
     --menu-bar-background-color: rgb(31,30,34);

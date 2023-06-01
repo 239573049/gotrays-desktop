@@ -6,7 +6,32 @@
         <MListItem Class="channel-message">
             <MListItemAction>
                 <MAvatar Size="35">
-                    <MImage Src="https://cdn.discordapp.com/avatars/924900818090602526/23dcd2c492ffe184cdaf193bb6c899ab.webp?size=128" Alt="Jack"></MImage>
+
+                    <MMenu OffsetX Right OffsetY Style="padding:5px;">
+                        <ActivatorContent Context="menuContext">
+                            <div class="text-center border-left-solid" style="width:88px;">
+                                <MAvatar @attributes="menuContext.Attrs" Size=40>
+                                    <MImage Src="https://cdn.discordapp.com/avatars/924900818090602526/23dcd2c492ffe184cdaf193bb6c899ab.webp?size=128"></MImage>
+                                </MAvatar>
+                            </div>
+                        </ActivatorContent>
+                        <ChildContent>
+
+                            <MAvatar Size=60 Style="margin:10px;">
+                                <MImage Src="https://cdn.discordapp.com/avatars/924900818090602526/23dcd2c492ffe184cdaf193bb6c899ab.webp?size=128"></MImage>
+                            </MAvatar>
+
+                            <MCard Outlined Style="background-color:rgb(17 19 20);margin:10px;color: aliceblue;">
+                                <div style="margin:10px;">
+                                    <span style="font-size:18px;">Token</span>
+                                    <span style="font-size:12px;">简介：</span>
+                                    <MDivider Style="border-color: #686b70 !important;margin:2px"></MDivider>
+                                    <div>一直在进步的人永远不会差！</div>
+                                </div>
+                            </MCard>
+                        </ChildContent>
+                    </MMenu>
+
                 </MAvatar>
             </MListItemAction>
 
@@ -15,7 +40,8 @@
                     <span style="color: cornflowerblue;">Token</span>
                 </MListItemTitle>
                 <MListItemContent>
-                    @context.Message
+                    <MMarkdownIt Source="@context.Message" Class="markdown-parser__basic"  />
+                    
                 </MListItemContent>
             </MListItemContent>
 
@@ -32,7 +58,7 @@
         <MTextarea Dense
                    Flat
                    HideDetails="@("true")"
-                    OnKeyDown="SendMessage"
+                   OnKeyDown="SendMessage"
                    SoloInverted
          @bind-Value="Message"></MTextarea>
          </MResponsive>
