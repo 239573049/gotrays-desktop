@@ -17,6 +17,9 @@
 - [Token Module](https://github.com/239573049/token-module)
 - [Masa Framework](https://docs.masastack.com/framework/concepts/overview)
 
+## 活动
+
+![Alt](https://repobeats.axiom.co/api/embed/786db717da2f7e94a92df23254e9b081128b91a1.svg "Repobeats analytics image")
 
 ## 交流
 
