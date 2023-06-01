@@ -1,5 +1,4 @@
 ﻿using Gotrays.Desktop.Service.Middlewares;
-using Masa.BuildingBlocks.Service.Caller;
 using Microsoft.Extensions.DependencyInjection;
 
 namespace Gotrays.Desktop.Service;
@@ -16,6 +15,8 @@ public class GotraysDesktopServiceModule : TokenModule
                 httpClient.Prefix = "api/v1/";//指定API服务前缀
             }).AddMiddleware<GotraysMiddleware>();
         });
+
+
 
     }
 }

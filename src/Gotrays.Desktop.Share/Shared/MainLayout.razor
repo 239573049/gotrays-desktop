@@ -1,5 +1,9 @@
-﻿@inherits LayoutComponentBase
+﻿@using Gotrays.Contracts.Users
+@inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
+@inject IPopupService PopupService
+@inject IStorageService StorageService
+@attribute [Authorize]
 
 <MApp Id="inspire">
     <MAppBar App
@@ -8,14 +12,6 @@
              Flat
              Height="72">
         <MSpacer></MSpacer>
-        <MResponsive MaxHeight="156">
-            <MTextField Dense
-                        Flat
-                        HideDetails="@("true")"
-                        Rounded
-                        SoloInverted
-                        Value="@("")"></MTextField>
-        </MResponsive>
     </MAppBar>
 
     <MNavigationDrawer @bind-Value="_drawer"

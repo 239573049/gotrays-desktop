@@ -1,8 +1,10 @@
 using Gotrays.Service.Contract.Jwt;
+using Gotrays.Service.Hubs;
 using Gotrays.Service.Infrastructure.EntityFrameworkCore;
 using Gotrays.Service.Infrastructure.Expressions;
 using Masa.BuildingBlocks.Data.UoW;
 using Masa.BuildingBlocks.Ddd.Domain.Repositories;
+using MessagePack;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -15,6 +17,14 @@ var jwtOptions = jwtSection.Get<JwtOptions>();
 builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 
 #endregion
+
+builder.Services
+    .AddSignalR()
+    .AddMessagePackProtocol(options =>
+    {
+        options.SerializerOptions = MessagePackSerializerOptions.Standard
+            .WithSecurity(MessagePackSecurity.UntrustedData);
+    });
 
 var app = builder.Services
     .AddEndpointsApiExplorer()
@@ -76,7 +86,8 @@ app.UseAuthorization();
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger().UseSwaggerUI(options => options.SwaggerEndpoint("/swagger/v1/swagger.json", "GotraysApp"));
-
 }
+
+app.MapHub<ChatHub>("/ChatHub");
 
 await app.RunAsync();

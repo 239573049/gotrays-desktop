@@ -34,6 +34,19 @@
     color: var(--menu-bar-content-text-color);
 }
 
+.channel-message {
+    transition: 0.3s;
+}
+
+    .channel-message:hover {
+        transition: 0.3s;
+        background-color: rgb(48 51 56);
+    }
+
+.theme--light .m-divider__content {
+    background-color: var(--app-bar-background-color) !important;
+}
+
 :root {
     /*²Ëµ¥±³¾°*/
     --menu-bar-background-color: rgb(31,30,34);

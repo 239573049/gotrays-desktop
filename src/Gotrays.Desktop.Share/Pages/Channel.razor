@@ -1,5 +1,39 @@
 ﻿@page "/channel"
 
-<h3>Channel</h3>
+<MVirtualScroll Height=@("calc(100vh - 140px)") OverscanCount=0 ItemHeight=64 Items="_channels">
+    <ItemContent>
+        <MDivider Style="background-color: var(--app-bar-background-color)">@context.CreatedTime.ToString("yyyy-MM-dd")</MDivider>
+        <MListItem Class="channel-message">
+            <MListItemAction>
+                <MAvatar Size="35">
+                    <MImage Src="https://cdn.discordapp.com/avatars/924900818090602526/23dcd2c492ffe184cdaf193bb6c899ab.webp?size=128" Alt="Jack"></MImage>
+                </MAvatar>
+            </MListItemAction>
 
-@ChannelDto.Description
+            <MListItemContent>
+                <MListItemTitle>
+                    <span style="color: cornflowerblue;">Token</span>
+                </MListItemTitle>
+                <MListItemContent>
+                    @context.Message
+                </MListItemContent>
+            </MListItemContent>
+
+            <MListItemAction>
+            </MListItemAction>
+
+        </MListItem>
+
+    </ItemContent>
+</MVirtualScroll>
+
+<MFooter Style="background-color:var(--app-bar-background-color);">
+    <MResponsive MaxHeight="100">
+        <MTextarea Dense
+                   Flat
+                   HideDetails="@("true")"
+                    OnKeyDown="SendMessage"
+                   SoloInverted
+         @bind-Value="Message"></MTextarea>
+         </MResponsive>
+</MFooter>
