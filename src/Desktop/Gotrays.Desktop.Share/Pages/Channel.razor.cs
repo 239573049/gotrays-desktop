@@ -1,4 +1,7 @@
-﻿namespace Gotrays.Desktop.Share.Pages
+﻿using Gotrays.Desktop.Share.Shared;
+using Microsoft.AspNetCore.SignalR.Client;
+
+namespace Gotrays.Desktop.Share.Pages
 {
     public partial class Channel
     {
@@ -6,6 +9,10 @@
         public ChannelDto ChannelDto { get; set; }
 
         private List<ChannelMessageDto> _channels = new();
+
+        [Parameter]
+        [CascadingParameter(Name = nameof(MainLayout))]
+        public MainLayout MainLayout { get; set; }
 
         private string? Message;
 
@@ -33,9 +40,11 @@
 
             if (obj.Key == "Enter")
             {
+                var user = ((CustomAuthenticationStateProvider)AuthenticationStateProvider).UserId();
                 var message = new ChannelMessageDto()
                 {
                     Id = Guid.NewGuid(),
+                    TheirUserId = user,
                     ChannelId = ChannelDto.Id,
                     CreatedTime = DateTime.Now,
                     Message = Message,
@@ -43,13 +52,16 @@
                 };
                 _channels.Add(message);
 
+                // 发送消息至服务器
+                await MainLayout.Connection.SendAsync("SendChannel", message);
+
+                // 存储消息
                 await StorageService.AddChatMessage(message);
 
                 Message = string.Empty;
 
                 await Task.CompletedTask;
             }
-
         }
     }
 }

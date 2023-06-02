@@ -1,4 +1,5 @@
 ﻿using Gotrays.Service.Application.Chat.Queries;
+using Gotrays.Service.Contract.Chat;
 using Masa.BuildingBlocks.Authentication.Identity;
 using Microsoft.AspNetCore.SignalR;
 
@@ -34,5 +35,11 @@ public class ChatHub : Hub
         {
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, s);
         }
+    }
+
+    [HubMethodName("SendChannel")]
+    public async Task SendChannelAsync(ChannelMessageDto dto)
+    {
+        await Clients.Groups(dto.ChannelId.ToString("N")).SendAsync("channel", dto);
     }
 }

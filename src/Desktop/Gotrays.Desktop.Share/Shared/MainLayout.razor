@@ -1,65 +1,70 @@
 ﻿@using Gotrays.Contracts.Users
+@using Microsoft.AspNetCore.SignalR.Client
 @inherits LayoutComponentBase
 @inject NavigationManager NavigationManager
 @inject IPopupService PopupService
 @inject IStorageService StorageService
+@inject AuthenticationStateProvider AuthenticationStateProvider
 @attribute [Authorize]
 
-<MApp Id="inspire">
-    <MAppBar App
-             Color="var(--app-bar-background-color)"
-             ClippedRight
-             Flat
-             Height="72">
-        <MSpacer></MSpacer>
-    </MAppBar>
+<CascadingValue Name="@nameof(MainLayout)" Value="this">
 
-    <MNavigationDrawer @bind-Value="_drawer"
-                              App
-                              MiniVariantWidth="300"
-                       Width="300">
+    <MApp Id="inspire">
+
+        <MAppBar App
+                 Color="var(--app-bar-background-color)"
+                 ClippedRight
+                 Flat
+                 Height="72">
+            <MSpacer></MSpacer>
+        </MAppBar>
 
         <MNavigationDrawer @bind-Value="_drawer"
-                                  Absolute
-                           Color="var(--menu-bar-background-color)"
-                                  MiniVariant>
-            <MAvatar Class="d-block text-center mx-auto mt-4 chat-room"
-                     Color="grey darken-1"
-                     Size="45">
-                <div class="pill-2RsI5Q wrapper-z5ab_q" aria-hidden="true">
-                    <span class="item-2LIpTv" style="opacity: 1; height: 40px; transform: none;"></span>
+                           App
+                           MiniVariantWidth="300"
+                           Width="300">
+
+            <MNavigationDrawer @bind-Value="_drawer"
+                               Absolute
+                               Color="var(--menu-bar-background-color)"
+                               MiniVariant>
+                <MAvatar Class="d-block text-center mx-auto mt-4 chat-room"
+                         Color="grey darken-1"
+                         Size="45">
+                    <div class="pill-2RsI5Q wrapper-z5ab_q" aria-hidden="true">
+                        <span class="item-2LIpTv" style="opacity: 1; height: 40px; transform: none;"></span>
                     </div>
 
-                <MImage Src="logo.png" Alt="Jack"></MImage>
-            </MAvatar>
+                    <MImage Src="logo.png" Alt="Jack"></MImage>
+                </MAvatar>
 
-            <MDivider Style="background-color:#7b7e81;" Class="mx-3 my-5"></MDivider>
+                <MDivider Style="background-color:#7b7e81;" Class="mx-3 my-5"></MDivider>
 
-            <MAvatar Class="d-block text-center mx-auto mb-9 chat-room"
-                     Color="grey lighten-1"
-                     Size="45">
-                <MImage Src="/png/csharp.png" Alt="Jack"></MImage>
-            </MAvatar>
+                <MAvatar Class="d-block text-center mx-auto mb-9 chat-room"
+                         Color="grey lighten-1"
+                         Size="45">
+                    <MImage Src="/png/csharp.png" Alt="Jack"></MImage>
+                </MAvatar>
 
 
-            <MAvatar Class="chat-room d-block text-center mx-auto mb-9 add"
-                     Color="grey lighten-1"
-                     Size="45">
-                <MIcon Color="#ffffff">fa:fas fa-light fa-plus</MIcon>
-            </MAvatar>
+                <MAvatar Class="chat-room d-block text-center mx-auto mb-9 add"
+                         Color="grey lighten-1"
+                         Size="45">
+                    <MIcon Color="#ffffff">fa:fas fa-light fa-plus</MIcon>
+                </MAvatar>
+
+            </MNavigationDrawer>
+
+            @if (_home)
+            {
+                <GMenu OnClick="(i) => OnChannelClick(i)"/>
+            }
 
         </MNavigationDrawer>
-
-        @if (_home)
-        {
-            <GMenu OnClick="(i)=>OnChannelClick(i)" />
-        }
-
-    </MNavigationDrawer>
-    <CascadingValue Value="Channel" Name="@(nameof(ChannelDto))">
-        <MMain Style="background-color:var(--app-bar-background-color);">
-            @Body
-        </MMain>
-    </CascadingValue>
-
-</MApp>
+        <CascadingValue Value="Channel" Name="@(nameof(ChannelDto))">
+            <MMain Style="background-color:var(--app-bar-background-color);">
+                @Body
+            </MMain>
+        </CascadingValue>
+    </MApp>
+</CascadingValue>

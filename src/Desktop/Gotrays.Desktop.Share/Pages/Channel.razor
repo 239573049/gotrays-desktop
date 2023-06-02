@@ -1,5 +1,6 @@
 ﻿@page "/channel"
 @inject IStorageService StorageService
+@inject AuthenticationStateProvider AuthenticationStateProvider
 
 <MVirtualScroll Height=@("calc(100vh - 140px)") OverscanCount=0 ItemHeight=64 Items="_channels">
     <ItemContent>

@@ -9,9 +9,9 @@ public partial class MainLayout
 
     private bool _home;
 
-    public ChannelDto Channel { get; set; }
+    public ChannelDto Channel { get; private set; }
 
-    private HubConnection _connection { get; set; }
+    public HubConnection Connection { get; private set; }
 
     private bool ConnectStatus;
 
@@ -23,6 +23,7 @@ public partial class MainLayout
             NavigationManager.NavigateTo("/");
             return;
         }
+
         Channel = channel;
         NavigationManager.NavigateTo("/channel");
     }
@@ -43,27 +44,22 @@ public partial class MainLayout
 
         if (!ConnectStatus)
         {
-            _connection = new HubConnectionBuilder()
-                .WithUrl("http://localhost:5126/ChatHub", options =>
-                {
-                    options.AccessTokenProvider = () => Task.FromResult(StorageService.Token);
-                })
+            Connection = new HubConnectionBuilder()
+                .WithUrl("http://localhost:5126/ChatHub",
+                    options => { options.AccessTokenProvider = () => Task.FromResult(StorageService.Token); })
                 .AddMessagePackProtocol()
                 .WithAutomaticReconnect()
                 .Build();
 
-            await _connection.StartAsync();
+            await Connection.StartAsync();
 
-            _connection.Closed += async (Exception? exception) =>
+            Connection.Closed += async (Exception? exception) =>
             {
                 ConnectStatus = false;
                 await PopupService.EnqueueSnackbarAsync(exception?.Message, AlertTypes.Error);
             };
 
-            _connection.On<ChannelMessageDto>("channel", (message) =>
-            {
-
-            });
+            Connection.On<ChannelMessageDto>("channel", (message) => { });
 
             ConnectStatus = true;
         }
