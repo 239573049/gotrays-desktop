@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" />
     <title>Gotrays.Dekstop.Client</title>
     <base href="/" />
     <link href="_content/Masa.Blazor/css/masa-blazor.min.css" rel="stylesheet">
@@ -16,6 +18,7 @@
         html {
             overflow: hidden;
         }
+
         .loader {
             border: 16px solid #f3f3f3;
             border-top: 16px solid #3498db;
@@ -30,9 +33,15 @@
         }
 
         @keyframes spin {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
+            0% {
+                transform: rotate(0deg);
+            }
+
+            100% {
+                transform: rotate(360deg);
+            }
         }
+
     </style>
 </head>
 
@@ -49,10 +58,9 @@
         <a href="" class="reload">Reload</a>
         <a class="dismiss">🗙</a>
     </div>
-
+    <div class="low-right" id="low-right"></div>
     <script src="_framework/blazor.webview.js"></script>
     <script src="_content/BlazorComponent/js/blazor-component.js"></script>
-
 </body>
 
 </html>

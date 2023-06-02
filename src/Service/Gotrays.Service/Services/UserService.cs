@@ -16,4 +16,19 @@ public class UserService : BaseService<UserService>, IUserService
         await EventBus.PublishAsync(query);
         return query.Result;
     }
+
+    public async Task<UserDto?> GetAsync(Guid? userId)
+    {
+        if (userId == null)
+        {
+            userId = UserContext.GetUserId<Guid>();
+            if (userId == null)
+            {
+                throw new UnauthorizedAccessException("未登录");
+            }
+        }
+        var query = new GetUserQuery((Guid)userId);
+        await EventBus.PublishAsync(query);
+        return query.Result;
+    }
 }

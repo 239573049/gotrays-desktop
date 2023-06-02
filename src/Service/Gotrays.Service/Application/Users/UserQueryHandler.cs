@@ -50,4 +50,26 @@ public class UserQueryHandler
 
         query.Result = token;
     }
+
+    [EventHandler]
+    public async Task GetUserAsync(GetUserQuery query)
+    {
+        var user = await _userRepository.FindAsync(x => x.Id == query.userId);
+
+        if (user == null)
+        {
+            throw new UserFriendlyException("用户不存在");
+        }
+
+        query.Result = new UserDto()
+        {
+            Id = user.Id,
+            Account = user.Account,
+            Avatar = user.Avatar,
+            IsDisable = user.IsDisable,
+            LastLoginTime = user.LastLoginTime,
+            UserName = user.UserName,
+            Role = user.Role,
+        };
+    }
 }

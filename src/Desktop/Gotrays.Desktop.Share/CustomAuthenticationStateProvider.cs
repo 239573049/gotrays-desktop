@@ -1,13 +1,10 @@
-﻿using Microsoft.AspNetCore.Components.Authorization;
-using System.Security.Claims;
+﻿namespace Gotrays.Desktop.Share;
 
-namespace Gotrays.Desktop.Share;
-
+using Gotrays.Contracts.Users;
+using Microsoft.AspNetCore.Components.Authorization;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Threading.Tasks;
-using Gotrays.Contracts.Users;
-using Microsoft.AspNetCore.Components.Authorization;
 
 public class CustomAuthenticationStateProvider : AuthenticationStateProvider
 {

@@ -26,9 +26,6 @@ namespace Gotrays.Desktop.Service.Middlewares
                 await next();
 
             }
-            catch (MasaException exception)
-            {
-            }
             catch (Exception ex)
             {
                 await _dialogService.Error(ex.Message);

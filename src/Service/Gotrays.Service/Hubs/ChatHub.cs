@@ -29,6 +29,7 @@ public class ChatHub : Hub
         var channelQuery = new UserChannelQuery(_userContext.GetUserId<Guid>(), null);
         await _eventBus.PublishAsync(channelQuery);
 
+        // 退出群聊
         foreach (var s in channelQuery.Result.Select(x => x.Id.ToString("N")))
         {
             await Groups.RemoveFromGroupAsync(Context.ConnectionId, s);

@@ -2,6 +2,7 @@ using Gotrays.Service.Contract.Jwt;
 using Gotrays.Service.Hubs;
 using Gotrays.Service.Infrastructure.EntityFrameworkCore;
 using Gotrays.Service.Infrastructure.Expressions;
+using Gotrays.Service.Infrastructure.Middlewares;
 using Masa.BuildingBlocks.Data.UoW;
 using Masa.BuildingBlocks.Ddd.Domain.Repositories;
 using MessagePack;
@@ -19,6 +20,7 @@ builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 #endregion
 
 builder.Services
+    .AddTransient<AbnormalMiddleware>()
     .AddSignalR()
     .AddMessagePackProtocol(options =>
     {
@@ -78,7 +80,7 @@ var app = builder.Services
     .AddAutoInject()
     .AddServices(builder, option => option.MapHttpMethodsForUnmatched = new[] { "Post" });
 
-app.UseMasaExceptionHandler();
+app.UseMiddleware<AbnormalMiddleware>();
 
 app.UseAuthentication();
 app.UseAuthorization();

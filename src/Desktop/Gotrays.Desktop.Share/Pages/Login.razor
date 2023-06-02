@@ -1,0 +1,71 @@
+@using Gotrays.Service.Contract.Users
+@page "/login"
+@inject NavigationManager NavigationManager
+@inject IUserService UserService
+@layout EmptyLayout
+
+<MRow Class="max-height ma-0">
+    <MCol Md=4 Sm=12 Class="neutral-lighten-5">
+        <image class="ml-12 mt-12" style="height:40px;" src="https://cdn.masastack.com/stack/images/logo/MASAStack/logo-h-en.png?x-oss-process=image/resize,w_200"></image>
+        <div class="d-flex pb-12" style="height: calc(100% - 88px);">
+            <div style="width:450px;" class="ma-auto">
+                <h3 class="neutral-lighten-1--text">让变化更简单</h3>
+                <div class="mt-12 neutral-lighten-1--text">
+                    让变化更简单，让视觉更美好，让体验更丰富，欢迎来到Masa产品系列。
+                </div>
+                <image class="mt-12" src="/img/login/left.svg"></image>
+            </div>
+        </div>
+    </MCol>
+    <MCol Md=8 Sm=12 Class="fill-lighten-1 block-center">
+        <MCard Width=510 Height=680 Class="mx-auto my-auto">
+            <div style="height:60px;"></div>
+            <div class="mt-2 mx-auto text-center" style="width:420px;">
+                <MAvatar Size=80>
+                    <MImage Src="/img/avatar/1.svg">
+                    </MImage>
+                </MAvatar>
+                <h5 class="mt-2 mb-12">欢迎使用Gotrays Desktop! 👋</h5>
+                <MTextField @bind-Value="Account"
+                            Label="用户名"
+                            Placeholder="admin"
+                                Outlined
+                             HideDetails="@("auto")">
+                 </MTextField>
+                 <MTextField @bind-Value="Password"
+                             Class="mt-10"
+                             Label="Password"
+                             Type="@(_show ? "text" : "password")"
+                             Placeholder="john@example.com"
+                             AppendIcon="@(_show ? "mdi-eye" : "mdi-eye-off")"
+                             OnAppendClick="() => _show = !_show"
+                                Outlined
+                             HideDetails="@("auto")">
+                 </MTextField>
+                 <span class="d-flex justify-end mt-1 text-caption hover-pointer">
+                     忘记密码？
+                 </span>
+                 <MButton Class="mt-11 rounded-4 text-btn white--text" OnClick=OnLogin Height=46 Width=340 Color="primary">登录</MButton>
+
+                 <div class="my-6">
+                     <span class="text-btn">想体验新功能? &nbsp;</span>
+                     <span class="primary--text hover-pointer" @onclick="CreateAccount">创建账号</span>
+                 </div>
+                 <div class="d-flex block-center">
+                     <div style="height:0.5px;width:152px;" class="neutral-lighten-5"></div>
+                     <span class="text-caption mx-4">或登入</span>
+                     <div style="height:0.5px;width:152px;" class="neutral-lighten-5"></div>
+                 </div>
+                 <div class="mt-4">
+                     <MIcon Size=24 Color="neutral-lighten-2" OnClick="() => { }">fab fa-codepen</MIcon>
+                     <MIcon Size=24 Color="neutral-lighten-2" Class="ml-6" OnClick="() => { }">fab fa-github</MIcon>
+                     <MIcon Size=24 Color="neutral-lighten-2" Class="ml-6" OnClick="() => { }">fab fa-twitter</MIcon>
+                     <MIcon Size=24 Color="neutral-lighten-2" Class="ml-6" OnClick="() => { }">fab fa-instagram</MIcon>
+                 </div>
+             </div>
+         </MCard>
+
+     </MCol>
+ </MRow>
+
+ <a href="https://beian.miit.gov.cn/" target="_blank" class="neutral-lighten-3--text" style="position:absolute;bottom:48px;margin-left:63%;text-decoration:none;font-size:14px;">浙ICP备2021013592号-1</a>

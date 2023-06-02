@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="FreeSql.Provider.Sqlite" Version="3.2.696" />
     <PackageReference Include="Masa.Contrib.Service.Caller.HttpClient" Version="1.0.0-rc.2.1" />
   </ItemGroup>
 

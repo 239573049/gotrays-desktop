@@ -1,0 +1,70 @@
+﻿@page "/register"
+@using Gotrays.Service.Contract.Users
+@layout EmptyLayout
+@inject IUserService UserService
+@inject IPopupService PopupService
+
+<div class="d-flex align-center" style="height:calc(100% - 96px)">
+    <MCard Width=510 Height=680 Class="mx-auto my-auto">
+        <div style="height:60px;"></div>
+        <div class="mt-2 mx-auto text-center" style="width:420px;">
+
+            <MAvatar Size=80>
+                <MImage Src="@Dto.Avatar">
+                </MImage>
+            </MAvatar>
+
+            <h5 class="mt-2 mb-12">欢迎使用Gotrays Desktop! 👋</h5>
+
+            <MTextField @bind-Value="Dto.UserName"
+                        Label="用户名称"
+                        Placeholder="token"
+                                Outlined
+                         HideDetails="@("auto")">
+             </MTextField>
+
+             <MTextField @bind-Value="Dto.Account"
+                         Label="账号"
+                         Class="mt-10"
+                         Placeholder="admin"
+                                Outlined
+                         HideDetails="@("auto")">
+             </MTextField>
+
+             <MTextField @bind-Value="Dto.Password"
+                         Class="mt-10"
+                         Label="密码"
+                         Type="@(_show ? "text" : "password")"
+                         Placeholder="john@example.com"
+                         AppendIcon="@(_show ? "mdi-eye" : "mdi-eye-off")"
+                         OnAppendClick="()=>_show = !_show"
+                                Outlined
+                         HideDetails="@("auto")">
+             </MTextField>
+             <MButton Class="mt-11 rounded-4 text-btn white--text" OnClick=OnRegister Height=46 Width=340 Color="primary">注册</MButton>
+
+             <div class="my-6">
+                 <span class="text-btn">已经存在账号? &nbsp;</span>
+                 <span class="primary--text hover-pointer" @onclick="OnLogin">登录</span>
+             </div>
+             <div class="d-flex block-center">
+                 <div style="height:0.5px;width:152px;" class="neutral-lighten-5"></div>
+                 <span class="text-caption mx-4">or login with</span>
+                 <div style="height:0.5px;width:152px;" class="neutral-lighten-5"></div>
+             </div>
+             <div class="mt-4">
+                 <MIcon Size=24 Color="neutral-lighten-2" OnClick="()=>{}">fab fa-codepen</MIcon>
+                 <MIcon Size=24 Color="neutral-lighten-2" Class="ml-6" OnClick="()=>{}">fab fa-github</MIcon>
+                 <MIcon Size=24 Color="neutral-lighten-2" Class="ml-6" OnClick="()=>{}">fab fa-twitter</MIcon>
+                 <MIcon Size=24 Color="neutral-lighten-2" Class="ml-6" OnClick="()=>{}">fab fa-instagram</MIcon>
+             </div>
+         </div>
+     </MCard>
+
+ </div>
+
+ <MFooter Padless Height=96 Style="background:transparent;">
+     <MRow Justify="JustifyTypes.Center">
+         <a href="https://beian.miit.gov.cn/" target="_blank" class="neutral-lighten-3--text" style="text-decoration:none;font-size:14px;">浙ICP备2021013592号-1</a>
+     </MRow>
+ </MFooter>

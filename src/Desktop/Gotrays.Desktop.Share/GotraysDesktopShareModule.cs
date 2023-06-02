@@ -9,6 +9,7 @@ public class GotraysDesktopShareModule : TokenModule
 {
     public override void ConfigureServices(IServiceCollection services)
     {
+        services.AddOptions();
         services.AddAuthorizationCore();
         services.TryAddSingleton<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
         services.AddMasaBlazor();

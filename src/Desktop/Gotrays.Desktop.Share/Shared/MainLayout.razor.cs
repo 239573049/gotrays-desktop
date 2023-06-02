@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
+using System.Data.Common;
 
 namespace Gotrays.Desktop.Share.Shared;
 
@@ -28,6 +29,13 @@ public partial class MainLayout
 
     protected override async Task OnInitializedAsync()
     {
+        if (string.IsNullOrEmpty(StorageService.Token))
+        {
+            NavigationManager.NavigateTo("/login");
+
+            return;
+        }
+
         if (NavigationManager.Uri == "http://localhost/")
         {
             _home = true;
@@ -51,6 +59,11 @@ public partial class MainLayout
                 ConnectStatus = false;
                 await PopupService.EnqueueSnackbarAsync(exception?.Message, AlertTypes.Error);
             };
+
+            _connection.On<ChannelMessageDto>("channel", (message) =>
+            {
+
+            });
 
             ConnectStatus = true;
         }

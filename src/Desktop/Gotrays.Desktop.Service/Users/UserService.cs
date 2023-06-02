@@ -1,4 +1,7 @@
 ﻿
+using Gotrays.Service.Contract.Base;
+using System.Net.Http.Json;
+
 namespace Gotrays.Desktop.Service.Users;
 
 public class UserService : BaseCaller, IUserService, ISingletonDependency
@@ -13,7 +16,13 @@ public class UserService : BaseCaller, IUserService, ISingletonDependency
 
     public async Task CreateAsync(CreateUserDto dto)
     {
-        await _caller.PostAsync("users", dto);
+        var response = await _caller.PostAsync("Users", dto);
+
+        if (response.IsSuccessStatusCode)
+        {
+            return;
+        }
+        throw new Exception((await response.Content.ReadFromJsonAsync<AbnormalDto>()).Message);
     }
 
     public async Task<string> LoginAsync(string account, string password)
@@ -38,5 +47,10 @@ public class UserService : BaseCaller, IUserService, ISingletonDependency
             Console.WriteLine(e);
             throw;
         }
+    }
+
+    public Task<UserDto?> GetAsync(Guid? userId)
+    {
+        return _caller.GetAsync<UserDto>("Users", userId);
     }
 }
