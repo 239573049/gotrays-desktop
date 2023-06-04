@@ -2,7 +2,6 @@
 using Gotrays.Service.Contract.Chat;
 using Masa.BuildingBlocks.Authentication.Identity;
 using Microsoft.AspNetCore.SignalR;
-using System.Text.Json;
 
 namespace Gotrays.Service.Hubs;
 

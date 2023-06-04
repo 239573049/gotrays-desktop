@@ -1,7 +1,7 @@
-﻿using System.Reflection;
-using Gotrays.Service.Domain.Chat.Aggregates;
+﻿using Gotrays.Service.Domain.Chat.Aggregates;
 using Gotrays.Service.Domain.Users.Aggregates;
 using Gotrays.Service.Infrastructure.Helpers;
+using System.Reflection;
 
 namespace Gotrays.Service.Infrastructure.EntityFrameworkCore;
 

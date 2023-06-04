@@ -17,7 +17,7 @@ public partial class MainLayout
     /// <summary>
     /// 消息发布事件
     /// </summary>
-    public Func<ChannelMessageDto,Task> OnMessage { get; set; }
+    public Func<ChannelMessageDto, Task> OnMessage { get; set; }
 
     private void OnChannelClick(ChannelDto channel)
     {

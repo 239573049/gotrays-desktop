@@ -5,7 +5,6 @@ using Gotrays.Service.Infrastructure.Expressions;
 using Gotrays.Service.Infrastructure.Middlewares;
 using Masa.BuildingBlocks.Data.UoW;
 using Masa.BuildingBlocks.Ddd.Domain.Repositories;
-using MessagePack;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);

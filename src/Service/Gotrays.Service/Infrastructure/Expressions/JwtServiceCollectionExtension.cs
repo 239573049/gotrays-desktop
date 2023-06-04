@@ -1,7 +1,7 @@
-﻿using System.Text;
-using Gotrays.Service.Contract.Jwt;
+﻿using Gotrays.Service.Contract.Jwt;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
+using System.Text;
 
 namespace Gotrays.Service.Infrastructure.Expressions;
 
