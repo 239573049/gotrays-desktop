@@ -56,7 +56,7 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
 
     public Guid UserId()
     {
-        return new Guid(User?.Claims.FirstOrDefault(x => x.Type == "http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier").Value);
+        return new Guid(User?.Claims.FirstOrDefault(x => x.Type == "nameid").Value);
     }
 
     public void AuthenticateUser(IEnumerable<Claim> _claims)

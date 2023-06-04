@@ -22,11 +22,7 @@ builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 builder.Services
     .AddTransient<AbnormalMiddleware>()
     .AddSignalR()
-    .AddMessagePackProtocol(options =>
-    {
-        options.SerializerOptions = MessagePackSerializerOptions.Standard
-            .WithSecurity(MessagePackSecurity.UntrustedData);
-    });
+    .AddMessagePackProtocol();
 
 var app = builder.Services
     .AddEndpointsApiExplorer()
@@ -70,7 +66,6 @@ var app = builder.Services
             .UseEventBus()
             .UseUoW<GotraysDbContext>()
             .UseRepository<GotraysDbContext>();
-        ;
     })
     .AddEventBus()
     .AddMasaDbContext<GotraysDbContext>(opt =>

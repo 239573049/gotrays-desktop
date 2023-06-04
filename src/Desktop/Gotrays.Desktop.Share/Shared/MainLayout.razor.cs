@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
-using System.Data.Common;
 
 namespace Gotrays.Desktop.Share.Shared;
 
@@ -14,6 +13,11 @@ public partial class MainLayout
     public HubConnection Connection { get; private set; }
 
     private bool ConnectStatus;
+
+    /// <summary>
+    /// 消息发布事件
+    /// </summary>
+    public Func<ChannelMessageDto,Task> OnMessage { get; set; }
 
     private void OnChannelClick(ChannelDto channel)
     {
@@ -37,10 +41,7 @@ public partial class MainLayout
             return;
         }
 
-        if (NavigationManager.Uri == "http://localhost/")
-        {
-            _home = true;
-        }
+        _home = true;
 
         if (!ConnectStatus)
         {
@@ -59,7 +60,12 @@ public partial class MainLayout
                 await PopupService.EnqueueSnackbarAsync(exception?.Message, AlertTypes.Error);
             };
 
-            Connection.On<ChannelMessageDto>("channel", (message) => { });
+            Connection.On<ChannelMessageDto>("channel", async (message) =>
+            {
+                OnMessage?.Invoke(message);
+
+                await StorageService.AddChatMessage(message);
+            });
 
             ConnectStatus = true;
         }

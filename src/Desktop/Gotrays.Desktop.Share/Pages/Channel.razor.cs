@@ -8,7 +8,7 @@ namespace Gotrays.Desktop.Share.Pages
         [CascadingParameter(Name = nameof(ChannelDto))]
         public ChannelDto ChannelDto { get; set; }
 
-        private List<ChannelMessageDto> _channels = new();
+        public List<ChannelMessageDto> _channels { get; set; } = new();
 
         [Parameter]
         [CascadingParameter(Name = nameof(MainLayout))]
@@ -23,6 +23,13 @@ namespace Gotrays.Desktop.Share.Pages
                 _channels = await StorageService.GetListAsync(ChannelDto.Id) ?? new List<ChannelMessageDto>();
                 StateHasChanged();
             }
+        }
+
+        protected override async Task OnInitializedAsync()
+        {
+            MainLayout.OnMessage += OnMessage;
+
+            await Task.CompletedTask;
         }
 
         private async Task SendMessage(KeyboardEventArgs obj)
@@ -41,6 +48,7 @@ namespace Gotrays.Desktop.Share.Pages
             if (obj.Key == "Enter")
             {
                 var user = ((CustomAuthenticationStateProvider)AuthenticationStateProvider).UserId();
+
                 var message = new ChannelMessageDto()
                 {
                     Id = Guid.NewGuid(),
@@ -50,17 +58,26 @@ namespace Gotrays.Desktop.Share.Pages
                     Message = Message,
                     Type = MessageType.Message
                 };
+
                 _channels.Add(message);
 
                 // 发送消息至服务器
                 await MainLayout.Connection.SendAsync("SendChannel", message);
 
-                // 存储消息
-                await StorageService.AddChatMessage(message);
-
+                // 清空输入框
                 Message = string.Empty;
 
                 await Task.CompletedTask;
+            }
+        }
+
+        private async Task OnMessage(ChannelMessageDto msg)
+        {
+            var user = ((CustomAuthenticationStateProvider)AuthenticationStateProvider).UserId();
+
+            if (user != msg.UserId)
+            {
+                _channels.Add(msg);
             }
         }
     }
