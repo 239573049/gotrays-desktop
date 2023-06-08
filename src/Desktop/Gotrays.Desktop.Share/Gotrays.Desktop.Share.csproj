@@ -17,13 +17,13 @@
         <PackageReference Include="Microsoft.AspNetCore.SignalR.Protocols.MessagePack" Version="7.0.5" />
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.30.1" />
     </ItemGroup>
-
-    <ItemGroup>
-        <Folder Include="wwwroot\js\" />
-    </ItemGroup>
     <ItemGroup>
         <Content Update="_Imports.razor">
             <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+        </Content>
+        <Content Update="Compontens\js\desktop.js">
+          <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
+          <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
         </Content>
     </ItemGroup>
     <ItemGroup>

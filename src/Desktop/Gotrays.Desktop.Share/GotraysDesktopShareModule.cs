@@ -1,4 +1,5 @@
-﻿using Gotrays.Service.Contract;
+﻿using Gotrays.Desktop.Share.Modules;
+using Gotrays.Service.Contract;
 using Microsoft.AspNetCore.Components.Authorization;
 using Microsoft.Extensions.DependencyInjection.Extensions;
 
@@ -11,6 +12,7 @@ public class GotraysDesktopShareModule : TokenModule
     {
         services.AddOptions();
         services.AddAuthorizationCore();
+        services.AddScoped<DesktopModule>();
         services.TryAddSingleton<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
         services.AddMasaBlazor();
     }

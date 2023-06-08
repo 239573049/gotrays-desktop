@@ -14,7 +14,9 @@ public partial class MainLayout
     private HubConnection _connection { get; set; }
 
     private bool ConnectStatus;
-
+    
+    private bool addChannel;
+    
     private void OnChannelClick(ChannelDto channel)
     {
         if (Channel == channel)

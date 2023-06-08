@@ -1,0 +1,28 @@
+@inject DesktopModule DesktopModule
+@inject IChannelService ChannelService
+
+<PModal Title="增加管道" Width="@("60%")" Value="Value" ValueChanged="ValueChanged">
+    <div @onclick="AvatarClick">
+        <MAvatar Style="margin: 0px 0px 0px 50%">
+            <MImage Src="@Avatar" Alt="Jack"></MImage>
+        </MAvatar>
+    </div>
+    <InputFile
+        id=@FileId
+        accept="image/*"
+        style="display: none" OnChange="@HandleOnChange"/>
+    <MDivider></MDivider>
+
+    <MTextField Style="margin: 5px" @bind-Value="Name" Label="管道名称"
+                Outlined
+                Dense>
+    </MTextField>
+
+
+    <MTextField Style="margin: 5px" @bind-Value="Description" Label="管道描述"
+                Outlined
+                Dense>
+    </MTextField>
+
+    <MButton Block OnClick="OnClick">新增</MButton>
+</PModal>
