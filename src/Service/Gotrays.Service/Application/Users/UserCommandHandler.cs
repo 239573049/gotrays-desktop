@@ -1,5 +1,4 @@
-﻿using Gotrays.Service.Application.Users.Commands;
-using Gotrays.Service.Domain.Users.Aggregates;
+﻿using Gotrays.Service.Domain.Users.Aggregates;
 using Gotrays.Service.Domain.Users.Repositories;
 using Gotrays.Service.Infrastructure.Helpers;
 using Masa.BuildingBlocks.Data.UoW;

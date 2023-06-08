@@ -1,5 +1,4 @@
 ﻿using Microsoft.AspNetCore.SignalR.Client;
-using System.Data.Common;
 
 namespace Gotrays.Desktop.Share.Shared;
 
@@ -9,14 +8,19 @@ public partial class MainLayout
 
     private bool _home;
 
-    public ChannelDto Channel { get; set; }
+    public ChannelDto Channel { get; private set; }
 
-    private HubConnection _connection { get; set; }
+    public HubConnection Connection { get; private set; }
 
     private bool ConnectStatus;
     
     private bool addChannel;
     
+    /// <summary>
+    /// 消息发布事件
+    /// </summary>
+    public Func<ChannelMessageDto, Task> OnMessage { get; set; }
+
     private void OnChannelClick(ChannelDto channel)
     {
         if (Channel == channel)
@@ -25,6 +29,7 @@ public partial class MainLayout
             NavigationManager.NavigateTo("/");
             return;
         }
+
         Channel = channel;
         NavigationManager.NavigateTo("/channel");
     }
@@ -38,33 +43,30 @@ public partial class MainLayout
             return;
         }
 
-        if (NavigationManager.Uri == "http://localhost/")
-        {
-            _home = true;
-        }
+        _home = true;
 
         if (!ConnectStatus)
         {
-            _connection = new HubConnectionBuilder()
-                .WithUrl("http://localhost:5126/ChatHub", options =>
-                {
-                    options.AccessTokenProvider = () => Task.FromResult(StorageService.Token);
-                })
+            Connection = new HubConnectionBuilder()
+                .WithUrl("http://localhost:5126/ChatHub",
+                    options => { options.AccessTokenProvider = () => Task.FromResult(StorageService.Token); })
                 .AddMessagePackProtocol()
                 .WithAutomaticReconnect()
                 .Build();
 
-            await _connection.StartAsync();
+            await Connection.StartAsync();
 
-            _connection.Closed += async (Exception? exception) =>
+            Connection.Closed += async (Exception? exception) =>
             {
                 ConnectStatus = false;
                 await PopupService.EnqueueSnackbarAsync(exception?.Message, AlertTypes.Error);
             };
 
-            _connection.On<ChannelMessageDto>("channel", (message) =>
+            Connection.On<ChannelMessageDto>("channel", async (message) =>
             {
+                OnMessage?.Invoke(message);
 
+                await StorageService.AddChatMessage(message);
             });
 
             ConnectStatus = true;

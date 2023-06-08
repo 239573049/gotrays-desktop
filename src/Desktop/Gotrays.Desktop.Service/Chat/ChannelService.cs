@@ -1,6 +1,4 @@
 ﻿using Gotrays.Service.Contract.Chat;
-using Masa.BuildingBlocks.Service.Caller;
-using Token.Dependency;
 
 namespace Gotrays.Desktop.Service.Chat;
 

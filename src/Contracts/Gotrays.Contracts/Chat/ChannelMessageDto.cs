@@ -22,4 +22,9 @@ public class ChannelMessageDto
     /// 消息类型
     /// </summary>
     public MessageType Type { get; set; }
+
+    /// <summary>
+    /// 归属用户
+    /// </summary>
+    public Guid TheirUserId { get; set; }
 }

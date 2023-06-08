@@ -15,32 +15,32 @@ public class User : FullAggregateRoot<Guid, Guid?>
     /// <summary>
     /// 用户名称
     /// </summary>
-    public string UserName { get;  set; }
+    public string UserName { get; set; }
 
     /// <summary>
     /// 账户
     /// </summary>
-    public string Account { get;  set; }
+    public string Account { get; set; }
 
     /// <summary>
     /// 密码
     /// </summary>
-    public string Password { get;  set; }
+    public string Password { get; set; }
 
     /// <summary>
     /// 盐
     /// </summary>
-    public string Salt { get;  set; }
+    public string Salt { get; set; }
 
     /// <summary>
     /// 头像
     /// </summary>
-    public string Avatar { get;  set; }
+    public string Avatar { get; set; }
 
     /// <summary>
     /// 是否禁用
     /// </summary>
-    public bool IsDisable { get;  set; }
+    public bool IsDisable { get; set; }
 
     /// <summary>
     /// 角色
@@ -50,5 +50,5 @@ public class User : FullAggregateRoot<Guid, Guid?>
     /// <summary>
     /// 上一次登陆时间
     /// </summary>
-    public DateTime LastLoginTime { get;  set; }
+    public DateTime LastLoginTime { get; set; }
 }

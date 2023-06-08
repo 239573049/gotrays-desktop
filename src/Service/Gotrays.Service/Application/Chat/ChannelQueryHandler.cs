@@ -28,6 +28,6 @@ public class ChannelQueryHandler
             Name = x.Name,
             UserId = x.UserId
         }).ToList();
-        
+
     }
 }

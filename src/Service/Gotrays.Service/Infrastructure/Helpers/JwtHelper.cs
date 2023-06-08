@@ -1,9 +1,9 @@
-﻿using System.IdentityModel.Tokens.Jwt;
-using System.Security.Claims;
-using System.Text;
-using Gotrays.Service.Contract.Jwt;
+﻿using Gotrays.Service.Contract.Jwt;
 using Masa.Contrib.Authentication.Identity;
 using Microsoft.IdentityModel.Tokens;
+using System.IdentityModel.Tokens.Jwt;
+using System.Security.Claims;
+using System.Text;
 
 namespace Gotrays.Service.Infrastructure.Helpers;
 

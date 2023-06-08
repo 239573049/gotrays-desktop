@@ -54,6 +54,11 @@ public class CustomAuthenticationStateProvider : AuthenticationStateProvider
         return Task.FromResult(new AuthenticationState(User));
     }
 
+    public Guid UserId()
+    {
+        return new Guid(User?.Claims.FirstOrDefault(x => x.Type == "nameid").Value);
+    }
+
     public void AuthenticateUser(IEnumerable<Claim> _claims)
     {
         var identity = new ClaimsIdentity(_claims, "Gotrays");

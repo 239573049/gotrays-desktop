@@ -2,7 +2,7 @@
 {
     public interface IDialogService
     {
-        Task Error(string  message);
+        Task Error(string message);
 
         Task Success(string message);
 
