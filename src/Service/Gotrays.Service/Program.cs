@@ -25,6 +25,7 @@ builder.Services
 
 var app = builder.Services
     .AddEndpointsApiExplorer()
+    .AddHttpContextAccessor()
     .AddAuthorization()
     .AddMasaIdentity()
     .AddHttpContextAccessor()

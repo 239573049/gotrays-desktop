@@ -4,7 +4,7 @@ using Token.Dependency;
 
 namespace Gotrays.Desktop.Share.Popups
 {
-    public class DialogService : IDialogService, ISingletonDependency
+    public class DialogService : IDialogService, IScopedDependency
     {
         private readonly IPopupService _popupService;
 
