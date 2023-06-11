@@ -1,7 +1,7 @@
 @inject DesktopModule DesktopModule
 @inject IChannelService ChannelService
 
-<PModal Title="增加管道" Width="@("60%")" Value="Value" ValueChanged="ValueChanged">
+<PModal Title="增加频道" Width="@("60%")" Value="Value" ValueChanged="ValueChanged">
     <div @onclick="AvatarClick">
         <MAvatar Style="margin: 0px 0px 0px 50%">
             <MImage Src="@Avatar" Alt="Jack"></MImage>
@@ -13,13 +13,13 @@
         style="display: none" OnChange="@HandleOnChange"/>
     <MDivider></MDivider>
 
-    <MTextField Style="margin: 5px" @bind-Value="Name" Label="管道名称"
+    <MTextField Style="margin: 5px" @bind-Value="Name" Label="频道名称"
                 Outlined
                 Dense>
     </MTextField>
 
 
-    <MTextField Style="margin: 5px" @bind-Value="Description" Label="管道描述"
+    <MTextField Style="margin: 5px" @bind-Value="Description" Label="频道描述"
                 Outlined
                 Dense>
     </MTextField>

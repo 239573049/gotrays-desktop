@@ -27,4 +27,9 @@ public class ChannelMessageDto
     /// 归属用户
     /// </summary>
     public Guid TheirUserId { get; set; }
+
+    /// <summary>
+    /// 显示
+    /// </summary>
+    public bool Show { get; set; }
 }

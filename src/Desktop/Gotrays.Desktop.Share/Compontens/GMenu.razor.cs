@@ -16,7 +16,7 @@ namespace Gotrays.Desktop.Share.Compontens
             await JSRuntime.InvokeVoidAsync("open", "https://github.com/239573049/gotrays-desktop");
         }
 
-        private async Task LoadAsync()
+        public async Task LoadAsync()
         {
             channelDtos = await ChannelService.GetListAsync(string.Empty);
         }

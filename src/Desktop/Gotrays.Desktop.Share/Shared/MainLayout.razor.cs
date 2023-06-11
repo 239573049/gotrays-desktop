@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.SignalR.Client;
+﻿using Gotrays.Desktop.Share.Compontens;
+using Microsoft.AspNetCore.SignalR.Client;
 
 namespace Gotrays.Desktop.Share.Shared;
 
@@ -20,6 +21,8 @@ public partial class MainLayout
     /// 消息发布事件
     /// </summary>
     public Func<ChannelMessageDto, Task> OnMessage { get; set; }
+
+    private GMenu GMenu;
 
     private void OnChannelClick(ChannelDto channel)
     {
@@ -74,5 +77,13 @@ public partial class MainLayout
 
 
         await Task.CompletedTask;
+    }
+
+    private async Task CreateChnannelChanged()
+    {
+        if (GMenu != null)
+        {
+            await GMenu!.LoadAsync();
+        }
     }
 }

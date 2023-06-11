@@ -28,6 +28,9 @@ public partial class AddChannel : IAsyncDisposable
 
     private MemoryStream? fileStream;
 
+    [Parameter]
+    public EventCallback OnClickChanged { get; set; }
+
     private async Task HandleOnChange(InputFileChangeEventArgs eventArgs)
     {
         fileStream = new MemoryStream();
@@ -52,6 +55,8 @@ public partial class AddChannel : IAsyncDisposable
             Name = Name,
             Description = Description
         });
+
+        await OnClickChanged.InvokeAsync();
     }
 
     public async ValueTask DisposeAsync()

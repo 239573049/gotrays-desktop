@@ -47,7 +47,7 @@ public class GotraysDbContext : MasaDbContext<GotraysDbContext>
         {
             options.HasKey(x => x.Id);
 
-            options.HasIndex(x => x.UserId).IsUnique();
+            options.HasIndex(x => x.UserId);
             options.HasIndex(x => x.Name);
             options.Property(x => x.Name).HasMaxLength(20).IsRequired();
             options.Property(x => x.Description).HasMaxLength(200);

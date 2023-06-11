@@ -1,0 +1,30 @@
+﻿@inject IUserService UserService
+
+
+<MMenu OffsetX Right OffsetY Style="padding:5px;" Value=Value ValueChanged="ValueChanged">
+    <ActivatorContent Context="menuContext">
+        @ActivatorContent?.Invoke(menuContext)
+    </ActivatorContent>
+    <ChildContent>
+        <MSkeletonLoader Class="mx-auto"
+                         MaxWidth="300"
+                         Type="card" Boilerplate=@(User!=null)>
+            @if (User != null)
+            {
+
+                <MAvatar Size=60 Style="margin:10px;">
+                    <MImage Src="@User.Avatar"></MImage>
+                </MAvatar>
+
+                <MCard Outlined Style="background-color:rgb(17 19 20);margin:10px;color: aliceblue;">
+                    <div style="margin:10px;">
+                        <span style="font-size:18px;">@User.UserName</span>
+                        <span style="font-size:12px;">简介：</span>
+                        <MDivider Style="border-color: #686b70 !important;margin:2px"></MDivider>
+                        <div>一直在进步的人永远不会差！</div>
+                    </div>
+                </MCard>
+            }
+        </MSkeletonLoader>
+    </ChildContent>
+</MMenu>

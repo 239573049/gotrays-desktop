@@ -6,3 +6,4 @@ global using Microsoft.Extensions.DependencyInjection;
 global using Microsoft.JSInterop;
 global using Token;
 global using Token.Attributes;
+global using Gotrays.Service.Contract.Users;

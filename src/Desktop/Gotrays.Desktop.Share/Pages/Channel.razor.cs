@@ -16,6 +16,12 @@ namespace Gotrays.Desktop.Share.Pages
 
         private string? Message;
 
+        protected override void OnInitialized()
+        {
+
+            MainLayout.OnMessage += OnMessage;
+        }
+
         protected override async Task OnAfterRenderAsync(bool firstRender)
         {
             if (firstRender)
@@ -25,10 +31,9 @@ namespace Gotrays.Desktop.Share.Pages
             }
         }
 
-        protected override async Task OnInitializedAsync()
+        private async Task OnClickUser(ChannelMessageDto dto)
         {
-            MainLayout.OnMessage += OnMessage;
-
+            dto.Show = true;
             await Task.CompletedTask;
         }
 
@@ -79,6 +84,7 @@ namespace Gotrays.Desktop.Share.Pages
             {
                 _channels.Add(msg);
             }
+            await InvokeAsync(StateHasChanged);
         }
     }
 }
