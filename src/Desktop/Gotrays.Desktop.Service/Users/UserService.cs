@@ -4,7 +4,7 @@ using System.Net.Http.Json;
 
 namespace Gotrays.Desktop.Service.Users;
 
-public class UserService : BaseCaller, IUserService, ISingletonDependency
+public class UserService : BaseCaller, IUserService, IScopedDependency
 {
     private readonly ICaller _caller;
     private readonly IStorageService _storageService;

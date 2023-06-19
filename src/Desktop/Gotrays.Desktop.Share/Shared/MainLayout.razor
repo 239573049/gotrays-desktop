@@ -14,6 +14,14 @@
                  Flat
                  Height="72">
             <MSpacer></MSpacer>
+            @if (Channel != null)
+            {
+                <ChannelSetting ChannelDto="Channel">
+                    <MButton Icon Attributes="@context.Attrs">
+                        <MIcon>mdi-cog</MIcon>
+                    </MButton>
+                </ChannelSetting>
+            }
         </MAppBar>
 
         <MNavigationDrawer @bind-Value="_drawer"
@@ -54,7 +62,7 @@
 
             @if (_home)
             {
-                <GMenu @ref=GMenu OnClick="OnChannelClick" />
+                <GMenu @ref=GMenu OnClick="OnChannelClick"/>
             }
 
         </MNavigationDrawer>
@@ -64,6 +72,6 @@
             </MMain>
         </CascadingValue>
 
-        <AddChannel @bind-Value="addChannel" OnClickChanged="CreateChnannelChanged" />
+        <AddChannel @bind-Value="addChannel" OnClickChanged="CreateChnannelChanged"/>
     </MApp>
 </CascadingValue>

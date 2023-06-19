@@ -1,0 +1,14 @@
+@inject IChannelService ChannelService
+
+<PDrawer Title="ÏµÍ³ÉèÖÃ" Width="500" 
+         ActionsStyle="background-color: var(--app-bar-background-color);" 
+         ContentStyle="background-color: var(--app-bar-background-color);"
+         BodyStyle="background-color: var(--app-bar-background-color);" 
+         HeaderStyle="background-color: var(--app-bar-background-color);">
+    <ActivatorContent>
+        @ChildContent.Invoke(context)
+    </ActivatorContent>
+    <ChildContent>
+        <h2>@ChannelDto.Name</h2>
+    </ChildContent>
+</PDrawer>

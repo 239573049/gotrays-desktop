@@ -2,7 +2,7 @@
 
 namespace Gotrays.Desktop.Service.Users
 {
-    public class StorageService : IStorageService, ISingletonDependency
+    public class StorageService : IStorageService, IScopedDependency
     {
         private readonly IFreeSql _freeSql;
 
@@ -15,16 +15,40 @@ namespace Gotrays.Desktop.Service.Users
 
         public string? Token
         {
-            get => token;
+            get
+            {
+                if (token.IsNullOrEmpty())
+                {
+                    var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                        "Gotrays", "token.key");
+                    if (File.Exists(path))
+                    {
+                        token = File.ReadAllText(path);
+                        TokenChange?.Invoke();
+                    }
+                }
+                return token;
+            }
 
             set
             {
+                var path = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
+                    "Gotrays", "token.key");
+
+                var info = new FileInfo(path);
+                if (!Directory.Exists(info.DirectoryName))
+                {
+                    Directory.CreateDirectory(info.DirectoryName);
+                }
+
+                File.WriteAllText(path, value);
                 token = value;
                 TokenChange?.Invoke();
             }
         }
 
         public Action? TokenChange { get; set; }
+
         public async Task AddChatMessage(ChannelMessageDto dto)
         {
             await _freeSql.Insert(dto).ExecuteAffrowsAsync();

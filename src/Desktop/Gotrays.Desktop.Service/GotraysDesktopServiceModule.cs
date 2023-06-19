@@ -29,7 +29,7 @@ public class GotraysDesktopServiceModule : TokenModule
             {
                 httpClient.BaseAddress = configuration["Apis:Urls"]; //指定API服务域名地址
                 httpClient.Prefix = configuration["Apis:Prefix"];//指定API服务前缀
-            }).AddMiddleware<GotraysMiddleware>();
+            }).AddMiddleware<GotraysMiddleware>(ServiceLifetime.Scoped);
         });
     }
 }

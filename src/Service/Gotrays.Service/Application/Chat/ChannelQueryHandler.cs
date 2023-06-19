@@ -7,10 +7,12 @@ namespace Gotrays.Service.Application.Chat;
 public class ChannelQueryHandler
 {
     private readonly IChannelRepository _channelRepository;
+    private readonly IChannelMemberRepository _channelMemberRepository;
 
-    public ChannelQueryHandler(IChannelRepository channelRepository)
+    public ChannelQueryHandler(IChannelRepository channelRepository, IChannelMemberRepository channelMemberRepository)
     {
         _channelRepository = channelRepository;
+        _channelMemberRepository = channelMemberRepository;
     }
 
     [EventHandler]
@@ -28,6 +30,21 @@ public class ChannelQueryHandler
             Name = x.Name,
             UserId = x.UserId
         }).ToList();
+    }
 
+    [EventHandler]
+    public async Task ChannelUsers(ChannelUsersQuery query)
+    {
+        var ids = await _channelMemberRepository.GetListAsync(query.channelId);
+
+        query.Result = ids.Select(x => new UserDto()
+        {
+            Id = x.User.Id,
+            Avatar = x.User.Avatar,
+            Account = x.User.Account,
+            UserName = x.User.UserName,
+            Role = x.User.Role,
+            IsDisable = x.User.IsDisable
+        }).ToList();
     }
 }

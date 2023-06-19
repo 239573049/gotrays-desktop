@@ -13,8 +13,7 @@ internal class Program
             new ConfigurationBuilder()
                 .AddJsonFile("appsettings.json", optional: true, reloadOnChange: true)
                 .Build();
-
-
+        
         var builder = PhotinoBlazorAppBuilder.CreateDefault(args);
 
         builder.RootComponents.Add<App>("#app");

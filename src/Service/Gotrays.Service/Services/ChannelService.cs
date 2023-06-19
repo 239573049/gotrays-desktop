@@ -18,4 +18,11 @@ public class ChannelService : BaseService<ChannelService>, IChannelService
         await EventBus.PublishAsync(query);
         return query.Result;
     }
+
+    public async Task<List<UserDto>> GetChannelUsersAsync(Guid channelId)
+    {
+        var query = new ChannelUsersQuery(channelId);
+        await EventBus.PublishAsync(query);
+        return query.Result;
+    }
 }

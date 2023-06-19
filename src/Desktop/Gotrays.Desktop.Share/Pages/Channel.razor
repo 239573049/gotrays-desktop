@@ -4,11 +4,10 @@
 
 <MVirtualScroll Height=@("calc(100vh - 140px)") OverscanCount=0 ItemHeight=64 Items="_channels">
     <ItemContent>
-        <MDivider Style="background-color: var(--app-bar-background-color)">@context.CreatedTime.ToString("yyyy-MM-dd")</MDivider>
+        <MDivider Style="background-color: var(--app-bar-background-color)"> @context.CreatedTime.ToString("yyyy-MM-dd")</MDivider>
         <MListItem Class="channel-message">
             <MListItemAction>
                 <MAvatar Size="35">
-
                     <PersonalInformation @bind-Value=context.Show TheirUserId=context.TheirUserId>
                         <ActivatorContent Context="data">
                             <div class="text-center border-left-solid" style="width:88px;">

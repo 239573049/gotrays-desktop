@@ -41,6 +41,7 @@ public partial class MainLayout
     {
         if (string.IsNullOrEmpty(StorageService.Token))
         {
+            // 如果token是空的则情况消息返回到登录界面 如果不为空则登录成功
             NavigationManager.NavigateTo("/login");
 
             return;
@@ -50,6 +51,7 @@ public partial class MainLayout
 
         if (!ConnectStatus)
         {
+            // 连接到服务器
             Connection = new HubConnectionBuilder()
                 .WithUrl("http://localhost:5126/ChatHub",
                     options => { options.AccessTokenProvider = () => Task.FromResult(StorageService.Token); })
@@ -59,12 +61,14 @@ public partial class MainLayout
 
             await Connection.StartAsync();
 
+            // 连接失败处理
             Connection.Closed += async (Exception? exception) =>
             {
                 ConnectStatus = false;
                 await PopupService.EnqueueSnackbarAsync(exception?.Message, AlertTypes.Error);
             };
 
+            // 连接成功处理监听发送日志
             Connection.On<ChannelMessageDto>("channel", async (message) =>
             {
                 OnMessage?.Invoke(message);

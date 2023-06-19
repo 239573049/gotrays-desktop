@@ -5,8 +5,18 @@ namespace Gotrays.Desktop.Share.Pages
 {
     public partial class Channel
     {
+        private ChannelDto _channelDto;
+
         [CascadingParameter(Name = nameof(ChannelDto))]
-        public ChannelDto ChannelDto { get; set; }
+        public ChannelDto ChannelDto
+        {
+            get => _channelDto;
+            set
+            {
+                _channelDto = value;
+                _ = LoadMessageAsync();
+            }
+        }
 
         public List<ChannelMessageDto> _channels { get; set; } = new();
 
@@ -18,17 +28,7 @@ namespace Gotrays.Desktop.Share.Pages
 
         protected override void OnInitialized()
         {
-
             MainLayout.OnMessage += OnMessage;
-        }
-
-        protected override async Task OnAfterRenderAsync(bool firstRender)
-        {
-            if (firstRender)
-            {
-                _channels = await StorageService.GetListAsync(ChannelDto.Id) ?? new List<ChannelMessageDto>();
-                StateHasChanged();
-            }
         }
 
         private async Task OnClickUser(ChannelMessageDto dto)
@@ -37,6 +37,16 @@ namespace Gotrays.Desktop.Share.Pages
             await Task.CompletedTask;
         }
 
+        private async Task LoadMessageAsync()
+        {
+            _channels = await StorageService.GetListAsync(ChannelDto.Id);
+            _ = InvokeAsync(StateHasChanged);
+        }
+
+        /// <summary>
+        /// 发送消息
+        /// </summary>
+        /// <param name="obj"></param>
         private async Task SendMessage(KeyboardEventArgs obj)
         {
             if (string.IsNullOrEmpty(Message))
@@ -80,10 +90,11 @@ namespace Gotrays.Desktop.Share.Pages
         {
             var user = ((CustomAuthenticationStateProvider)AuthenticationStateProvider).UserId();
 
-            if (user != msg.UserId)
+            if (user != msg.TheirUserId)
             {
                 _channels.Add(msg);
             }
+
             await InvokeAsync(StateHasChanged);
         }
     }

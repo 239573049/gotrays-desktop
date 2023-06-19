@@ -13,7 +13,7 @@ public class GotraysDesktopShareModule : TokenModule
         services.AddOptions();
         services.AddAuthorizationCore();
         services.AddScoped<DesktopModule>();
-        services.TryAddSingleton<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
+        services.TryAddScoped<AuthenticationStateProvider, CustomAuthenticationStateProvider>();
         services.AddMasaBlazor();
     }
 }

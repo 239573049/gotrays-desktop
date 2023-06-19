@@ -11,6 +11,8 @@ public class GotraysDbContext : MasaDbContext<GotraysDbContext>
 
     public DbSet<Channel> Channels { get; set; } = null!;
 
+    public DbSet<ChannelMember> ChannelMembers { get; set; } = null!;
+
     private readonly IConfiguration _configuration;
 
     public GotraysDbContext(MasaDbContextOptions<GotraysDbContext> options, IConfiguration configuration) :
@@ -54,6 +56,13 @@ public class GotraysDbContext : MasaDbContext<GotraysDbContext>
             options.Property(x => x.Avatar).HasMaxLength(200);
         });
 
+        modelBuilder.Entity<ChannelMember>(options =>
+        {
+            options.HasKey(x => x.Id);
+
+            options.HasIndex(x => new { x.ChannelId, x.UserId }).IsUnique();
+        });
+
         // 默认角色
         var user = new User(Guid.NewGuid())
         {
@@ -78,5 +87,10 @@ public class GotraysDbContext : MasaDbContext<GotraysDbContext>
         };
 
         modelBuilder.Entity<Channel>().HasData(channel);
+        modelBuilder.Entity<ChannelMember>().HasData(new ChannelMember(Guid.NewGuid())
+        {
+            UserId = user.Id,
+            ChannelId = channel.Id
+        });
     }
 }
